@@ -4,7 +4,8 @@ describe Service do
 
   describe "stations_by_distance" do
     it "finds all CO members" do
-        members = Service.stations_by_distance("80203")
+        service = Service.new("80203")
+        stations = service.stations_by_distance("80203")
         station = stations.first
 
         expect(stations.count).to eq(10)
