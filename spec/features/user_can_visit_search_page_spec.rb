@@ -5,8 +5,16 @@ describe 'as a user' do
      it 'should show a list of closest stations' do
        visit search_path
 
-       expect(page).to have_css(".nearest_stations", count: 10)
+       expect(page).to have_css(".nearest_stations")
        expect(page).to have_content("Nearest Stations")
+       expect(page).to have_css(".station", count: 10)
+
+       within(first(".station")) do
+         expect(page).to have_css(".name")
+         expect(page).to have_css(".address")
+         expect(page).to have_css(".fuel_types")
+         expect(page).to have_css(".access_times")
+       end
      end
   end
 end
